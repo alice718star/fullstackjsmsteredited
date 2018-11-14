@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>bedtime</title>
+	<style>*{font-family: helvetica;}</style>
+</head>
+<body>
+
+	<h1>Try to give Emmanuel a snack...</h1>
+
+	<p>What time is it?</p>
+	<label><input type="radio" name="hour" value="5"> 5pm</label><br>
+	<label><input type="radio" name="hour" value="6"> 6pm</label><br>
+	<label><input type="radio" name="hour" value="7"> 7pm</label><br>
+	<label><input type="radio" name="hour" value="8"> 8pm</label>
+
+	<p>What kind of Milk?</p>
+	<label><input type="radio" name="milkflav" value="chocolate"> Chocolate Milk</label><br>
+	<label><input type="radio" name="milkflav" value="strawberry"> Strawberry Milk</label><br>
+	<label><input type="radio" name="milkflav" value="plain"> Plain Milk</label>
+
+	<p>What kind of Snack?</p>
+	<label><input type="radio" name="snack" value="grapes"> Grapes</label><br>
+	<label><input type="radio" name="snack" value="apples"> Apples</label><br>
+	<label><input type="radio" name="snack" value="mango"> Mango</label><br>
+	<label><input type="radio" name="snack" value="banana"> Banana</label><br>
+	<label><input type="radio" name="snack" value="banana bread"> Banana Bread</label><br>
+	<label><input type="radio" name="snack" value="cupcakes"> Cupcakes</label><br>
+	<label><input type="radio" name="snack" value="Brocilli"> Brocolli</label><br><br>
+
+	<button type="button" id="eresponse" >offer to emmanuel</button><br><br>
+
+<script>
+    document.getElementById('eresponse').onclick = function(){
+        a = document.querySelector('input[name="hour"]:checked').value;
+        b = document.querySelector('input[name="milkflav"]:checked').value;
+        c = document.querySelector('input[name="snack"]:checked').value;
+        bts(a,b,c);
+    };
+    //query selector meant to select specific object vs all (which grabs sets of elements); input is a tag name where name = hour, ":checked" are pseudo classes that would limit to the one selected by user'/ a b c are variables*/
+    
+    function bts(x,y,z){
+        console.log(x,y,z);
+        if(x=='5'){
+            document.write("too early");
+        }else if (x=='8' ){
+            document.write("too late");
+        } else{
+            document.write("ready for snack<br>");
+            if(y=='plain'){
+                 document.write('i want chocolate milk<br>');
+                 gm = false; 
+            }else{
+                document.write('thank you for yummy milk<br>');
+                gm = true;
+            };
+            
+            if (z=="Brocilli" ){
+                document.write('i don\'t like this<br>');
+                gs = false;
+            }else if (z=="cupcakes" || z=='banana bread'){
+                document.write('sugar rush!!!!<br>');
+                gs = false;
+            } else{
+                document.write('thank you for the yummy snack<br>');
+                gs = true;
+            };
+            
+        if (gm && gs){
+            document.write("ready for bed");
+        } else{
+            document.write("time to run and play")
+        }
+        };
+    }
+      //whatever values user select we will pass onto bts function. when we call bts, console log would display each value by order. x y z are arguments. if 5 too early, if 8 too late for first answer; "||" represents OR; 3 conditions, 1 for each question, 2 are within 1st condition for time. gm and gs above rep a boolean (true or false). if both gm and gs true, we create another success msg, you dont need to say they are true as they are booleans not string values. last function only runs if both are true*/
+</script>
+</body>
+</html>
+
